@@ -1,0 +1,21 @@
+name: Verify Artifact
+
+on:
+  workflow_call:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: java-demo2-jar
+
+      - name: Show files
+        run: |
+          pwd
+          find .
+          ls -lh

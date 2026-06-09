@@ -1,0 +1,19 @@
+name: Spring Boot Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    uses: ./.github/workflows/build.yml
+
+  verify:
+    needs: build
+    uses: ./.github/workflows/verify.yml
+
+  docker:
+    needs: build
+    uses: ./.github/workflows/docker.yml
